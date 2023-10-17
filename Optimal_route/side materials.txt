@@ -1,0 +1,21 @@
+
+Tłumaczenie linijek:
+max_city_weight = float('-inf'), inicjalna wartość która pozwala na porównanie wyliczonej. pierwsza wyliczona będzie większa od niej
+
+
+permutations = [[self.start_city] + list(permutation) + [self.start_city] for permutation in permutations] - dodanie do miast wyjętych w iteracji miasta początkowego i końcowego do wyniku
+
+
+total_distance = sum(self.distances.loc[route[i], route[i + 1]] for i in range(len(route) - 1)) - oblicza łączną odległość dla danej trasy, route reprezentuje kolejne miasta w trasie.
+loc jest używane do indeksowania po etykietach
+
+
+optimal_routes.sort(key=lambda r: self.city_weights[r].sum() /
+                                          sum(self.distances.loc[r[j], r[j + 1]] for j in range(len(r) - 1))) - klucz sortowania oparty na lambdzie. Wylicza stosunek city_Weights do length of route i pozwala posortować wynik
+
+
+optimal_routes = optimal_routes[:self.num_solutions] - ucina wyniki do liczby podanej przez użytkownika
+
+optimal_routes.reverse() - jeszcze raz trzeba posortowac po ucięciu do określonej liczby wyników
+
+
